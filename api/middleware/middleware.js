@@ -23,18 +23,35 @@ res.status(404).json({
     res.status(500).json({
       message: "user not found"
     })
-  }
+  } 
   console.log('validateUserId middleware')
 }
 
 
 function validateUser(req, res, next) {
-  console.log('validateUser middleware')
+  const {name} = req.body 
+  if(!name || !name.trim()){
+    res.status(400).json({
+      message: "missing required name field"
+    })
+  }else{
+    req.name = name.trim()
+    next()
+  }
 }
 
 
 function validatePost(req, res, next) {
-  // DO YOUR MAGIC
+  // DO YOUR MAGICconst {name} = req.body 
+  if(!text || !text.trim()){
+    res.status(400).json({
+      message: "missing required text field"
+    })
+  }else{
+    req.text = text.trim()
+    next()
+  }
+  
   console.log('validatePost middleware')
 }
 
